@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>F1 Autonomous Racing Project — Your Name</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet" />
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; }
+:root {
+  --bg:#fff; --text:#494e52; --text-dark:#1a1d1e; --muted:#6f777d;
+  --border:#f2f3f3; --border-dark:#dee0e2; --link:#0092ca; --link-hover:#006f9b;
+  --tag-bg:#f2f3f3; --tag-text:#494e52;
+  --ml:#0b6e4e; --ml-bg:#e8f5f0;
+  --robot:#4a2d7a; --robot-bg:#eeebf7;
+  --data:#8a3500; --data-bg:#fdf0e6;
+  --font:Lato,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  --font-serif:Georgia,Times,'Times New Roman',serif;
+  --font-mono:'Lucida Console',Courier,monospace;
+}
+body { font-family:var(--font); font-size:16px; line-height:1.5; color:var(--text); background:var(--bg); -webkit-font-smoothing:antialiased; }
+a { color:var(--link); text-decoration:none; }
+a:hover { color:var(--link-hover); text-decoration:underline; }
+.masthead { position:sticky; top:0; z-index:200; background:var(--bg); border-bottom:1px solid var(--border-dark); }
+.masthead-inner { max-width:1280px; margin:0 auto; padding:0 1.5rem; display:flex; align-items:center; justify-content:space-between; height:56px; }
+.masthead-title { font-size:1rem; font-weight:700; color:var(--text-dark); text-decoration:none; }
+.masthead-title:hover { color:var(--link); text-decoration:none; }
+.greedy-nav { display:flex; list-style:none; }
+.greedy-nav a { display:block; padding:0 0.85rem; font-size:0.8125rem; font-weight:700; color:var(--text); text-transform:uppercase; letter-spacing:0.05em; line-height:56px; border-bottom:2px solid transparent; transition:color 0.15s,border-color 0.15s; }
+.greedy-nav a:hover { color:var(--link); text-decoration:none; border-bottom-color:var(--link); }
+.project-page { max-width:800px; margin:0 auto; padding:2.5rem 1.5rem 4rem; }
+.back-link { font-size:0.8125rem; font-weight:700; text-transform:uppercase; letter-spacing:0.05em; color:var(--muted); margin-bottom:2rem; display:inline-block; }
+.back-link:hover { color:var(--link); text-decoration:none; }
+.project-title { font-family:var(--font-serif); font-size:2rem; font-weight:400; color:var(--text-dark); line-height:1.2; margin-bottom:0.75rem; }
+.project-tags { display:flex; flex-wrap:wrap; gap:5px; margin-bottom:1.5rem; }
+.ptag { font-size:0.6875rem; font-weight:700; background:var(--tag-bg); color:var(--tag-text); padding:3px 8px; border-radius:3px; text-transform:uppercase; letter-spacing:0.04em; }
+.ptag-ml { background:var(--ml-bg); color:var(--ml); }
+.ptag-robot { background:var(--robot-bg); color:var(--robot); }
+.ptag-data { background:var(--data-bg); color:var(--data); }
+.project-body { font-size:0.9375rem; color:var(--text); line-height:1.7; }
+.project-body p { margin-bottom:1rem; }
+.project-body h2 { font-family:var(--font-serif); font-size:1.35rem; font-weight:400; color:var(--text-dark); margin:2rem 0 0.75rem; }
+.project-body ul { margin:0 0 1rem 1.5rem; }
+.project-body li { margin-bottom:0.35rem; }
+.page-footer { border-top:1px solid var(--border); padding:1.5rem; max-width:1280px; margin:0 auto; display:flex; justify-content:space-between; font-size:0.75rem; color:var(--muted); }
+</style>
+</head>
+<body>
+<div class="masthead">
+  <div class="masthead-inner">
+    <a href="../index.html" class="masthead-title">Your Name</a>
+    <ul class="greedy-nav">
+      <li><a href="../index.html#projects">Projects</a></li>
+      <li><a href="../index.html#skills">Skills</a></li>
+      <li><a href="../index.html#contact">Contact</a></li>
+    </ul>
+  </div>
+</div>
+<div class="project-page">
+  <a href="../index.html#projects" class="back-link">&larr; All Projects</a>
+  <h1 class="project-title">F1 Autonomous Racing Project</h1>
+  <div class="project-tags">
+    <span class="ptag ptag-robot">Robotics</span>
+    <span class="ptag">Autonomous</span>
+  </div>
+  <div class="project-body">
+    <p>Add a short summary of this project here.</p>
+    <h2>Overview</h2>
+    <p>Describe what this project is and why you built it.</p>
+    <h2>Key Features</h2>
+    <ul>
+      <li>Feature or contribution 1</li>
+      <li>Feature or contribution 2</li>
+      <li>Feature or contribution 3</li>
+    </ul>
+    <h2>Results</h2>
+    <p>Describe your outcomes, metrics, or impact here.</p>
+  </div>
+</div>
+<div class="page-footer">
+  <span>&copy; 2026 Your Name &middot; Powered by GitHub Pages</span>
+  <span>Styled after Minimal Mistakes</span>
+</div>
+</body>
+</html>
