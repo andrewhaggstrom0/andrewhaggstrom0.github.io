@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Your Name — ML Engineer & Roboticist</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet" />
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; }
+
+:root {
+  --bg:           #fff;
+  --text:         #494e52;
+  --text-dark:    #1a1d1e;
+  --muted:        #6f777d;
+  --border:       #f2f3f3;
+  --border-dark:  #dee0e2;
+  --link:         #0092ca;
+  --link-hover:   #006f9b;
+  --tag-bg:       #f2f3f3;
+  --tag-text:     #494e52;
+  --ml:           #0b6e4e;
+  --ml-bg:        #e8f5f0;
+  --robot:        #4a2d7a;
+  --robot-bg:     #eeebf7;
+  --data:         #8a3500;
+  --data-bg:      #fdf0e6;
+  --font:         Lato, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --font-serif:   Georgia, Times, 'Times New Roman', serif;
+  --font-mono:    'Lucida Console', Courier, monospace;
+}
+
+body { font-family: var(--font); font-size: 16px; line-height: 1.5; color: var(--text); background: var(--bg); -webkit-font-smoothing: antialiased; }
+a { color: var(--link); text-decoration: none; }
+a:hover { color: var(--link-hover); text-decoration: underline; }
+
+/* MASTHEAD */
+.masthead { position: sticky; top: 0; z-index: 200; background: var(--bg); border-bottom: 1px solid var(--border-dark); }
+.masthead-inner { max-width: 1280px; margin: 0 auto; padding: 0 1.5rem; display: flex; align-items: center; justify-content: space-between; height: 56px; }
+.masthead-title { font-size: 1rem; font-weight: 700; color: var(--text-dark); text-decoration: none; }
+.masthead-title:hover { color: var(--link); text-decoration: none; }
+.greedy-nav { display: flex; list-style: none; }
+.greedy-nav a { display: block; padding: 0 0.85rem; font-size: 0.8125rem; font-weight: 700; color: var(--text); text-transform: uppercase; letter-spacing: 0.05em; line-height: 56px; border-bottom: 2px solid transparent; transition: color 0.15s, border-color 0.15s; }
+.greedy-nav a:hover { color: var(--link); text-decoration: none; border-bottom-color: var(--link); }
+
+/* LAYOUT */
+.page-wrap { max-width: 1280px; margin: 0 auto; padding: 0 1.5rem; display: grid; grid-template-columns: 280px 1fr; gap: 3rem; align-items: start; }
+
+/* SIDEBAR */
+.sidebar { position: sticky; top: 72px; padding: 2rem 0; }
+.author-avatar { width: 110px; height: 110px; border-radius: 50%; background: #c9d4dc; display: flex; align-items: center; justify-content: center; font-size: 2.2rem; font-weight: 700; color: #fff; margin: 0 auto 1rem; }
+.author-name { font-size: 1.05rem; font-weight: 700; color: var(--text-dark); text-align: center; margin-bottom: 0.25rem; }
+.author-bio { font-size: 0.8125rem; color: var(--muted); text-align: center; line-height: 1.55; margin-bottom: 0.75rem; font-style: italic; }
+.author-location { font-size: 0.8rem; color: var(--muted); text-align: center; margin-bottom: 1.25rem; }
+.sidebar-divider { border: none; border-top: 1px solid var(--border); margin: 1rem 0; }
+.sidebar-links { list-style: none; display: flex; flex-direction: column; gap: 2px; }
+.sidebar-links li a { display: flex; align-items: center; gap: 8px; font-size: 0.8125rem; color: var(--text); padding: 5px 0; transition: color 0.15s; }
+.sidebar-links li a:hover { color: var(--link); text-decoration: none; }
+.si { width: 18px; text-align: center; font-size: 13px; color: var(--muted); flex-shrink: 0; }
+.sidebar-section { margin-top: 1.5rem; }
+.sidebar-section-title { font-size: 0.6875rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); margin-bottom: 0.75rem; }
+.sidebar-tags { display: flex; flex-wrap: wrap; gap: 5px; }
+.sidebar-tag { font-size: 0.6875rem; background: var(--tag-bg); color: var(--tag-text); padding: 3px 8px; border-radius: 3px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; }
+
+/* MAIN */
+.main-content { padding: 2rem 0 4rem; min-width: 0; }
+
+/* PAGE HERO */
+.page-hero { margin-bottom: 2.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border); }
+.page-hero-eyebrow { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 0.6rem; }
+.page-hero-title { font-family: var(--font-serif); font-size: 2rem; font-weight: 400; color: var(--text-dark); line-height: 1.2; margin-bottom: 0.75rem; }
+.page-hero-desc { font-size: 0.9375rem; color: var(--muted); max-width: 600px; line-height: 1.65; }
+
+/* SECTIONS */
+.content-section { margin-bottom: 3rem; padding-bottom: 2.5rem; border-bottom: 1px solid var(--border); }
+.content-section:last-child { border-bottom: none; }
+.section-title-row { display: flex; align-items: baseline; gap: 0.75rem; margin-bottom: 1.5rem; }
+.section-heading { font-family: var(--font-serif); font-size: 1.35rem; font-weight: 400; color: var(--text-dark); }
+.section-count { font-size: 0.75rem; color: var(--muted); }
+
+/* CATEGORY */
+.category-section { margin-bottom: 2.25rem; }
+.category-heading { display: flex; align-items: center; gap: 9px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid var(--border); }
+.cat-dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
+.cat-dot-ml    { background: var(--ml); }
+.cat-dot-robot { background: var(--robot); }
+.cat-dot-data  { background: var(--data); }
+
+/* ARCHIVE GRID */
+.archive-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+.archive-item { border: 1px solid var(--border); border-radius: 4px; padding: 1.1rem 1.25rem; background: var(--bg); transition: border-color 0.15s, box-shadow 0.15s; text-decoration: none; color: inherit; display: block; }
+.archive-item:hover { border-color: var(--border-dark); box-shadow: 0 2px 8px rgba(0,0,0,0.07); text-decoration: none; color: inherit; }
+.archive-item-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; margin-bottom: 0.4rem; }
+.archive-item-title { font-size: 0.9375rem; font-weight: 700; color: var(--text-dark); line-height: 1.35; }
+.archive-item:hover .archive-item-title { color: var(--link); }
+.archive-arrow { font-size: 12px; color: var(--muted); flex-shrink: 0; margin-top: 3px; }
+.archive-item-excerpt { font-size: 0.8125rem; color: var(--muted); line-height: 1.6; margin-bottom: 0.75rem; }
+.archive-item-tags { display: flex; flex-wrap: wrap; gap: 4px; }
+.atag { font-size: 0.6875rem; font-weight: 700; background: var(--tag-bg); color: var(--tag-text); padding: 2px 7px; border-radius: 2px; text-transform: uppercase; letter-spacing: 0.04em; }
+.atag-ml    { background: var(--ml-bg);    color: var(--ml); }
+.atag-robot { background: var(--robot-bg); color: var(--robot); }
+.atag-data  { background: var(--data-bg);  color: var(--data); }
+
+/* SKILLS */
+.skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+.skill-block { border: 1px solid var(--border); border-radius: 4px; padding: 1rem 1.1rem; }
+.skill-block-title { font-size: 0.8125rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; color: var(--text-dark); margin-bottom: 0.6rem; }
+.skill-items { list-style: none; font-size: 0.8rem; color: var(--muted); line-height: 1.9; font-family: var(--font-mono); }
+
+/* CONTACT */
+.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; align-items: start; }
+.contact-intro { font-size: 0.9375rem; color: var(--muted); line-height: 1.7; margin-bottom: 1.25rem; }
+.contact-links-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.contact-links-list li a { display: flex; align-items: center; gap: 10px; font-size: 0.875rem; color: var(--text); padding: 8px 12px; border: 1px solid var(--border); border-radius: 4px; transition: border-color 0.15s, color 0.15s; }
+.contact-links-list li a:hover { color: var(--link); border-color: var(--border-dark); text-decoration: none; }
+.ci { width: 20px; text-align: center; color: var(--muted); font-size: 13px; }
+.ck { margin-left: auto; font-size: 0.6875rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; }
+.contact-form { display: flex; flex-direction: column; gap: 0.85rem; }
+.form-label { display: block; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; color: var(--muted); margin-bottom: 4px; }
+.form-input, .form-textarea { width: 100%; font-family: var(--font); font-size: 0.875rem; color: var(--text-dark); padding: 8px 10px; border: 1px solid var(--border-dark); border-radius: 4px; background: var(--bg); outline: none; transition: border-color 0.15s; resize: none; }
+.form-input:focus, .form-textarea:focus { border-color: var(--link); }
+.form-textarea { min-height: 90px; }
+.btn-mm { align-self: flex-start; font-family: var(--font); font-size: 0.8125rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; padding: 9px 20px; background: var(--link); color: #fff; border: none; border-radius: 4px; cursor: pointer; transition: background 0.15s; }
+.btn-mm:hover { background: var(--link-hover); }
+
+/* FOOTER */
+.page-footer { border-top: 1px solid var(--border); padding: 1.5rem; max-width: 1280px; margin: 0 auto; display: flex; justify-content: space-between; font-size: 0.75rem; color: var(--muted); }
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .page-wrap { grid-template-columns: 1fr; }
+  .sidebar { position: static; padding: 2rem 0 0; }
+  .skills-grid { grid-template-columns: 1fr 1fr; }
+  .archive-grid { grid-template-columns: 1fr; }
+  .contact-grid { grid-template-columns: 1fr; }
+  .entry { grid-template-columns: 1fr; gap: 0.25rem; }
+}
+@media (max-width: 600px) {
+  .masthead-inner, .page-wrap, .page-footer { padding-left: 1rem; padding-right: 1rem; }
+  .skills-grid { grid-template-columns: 1fr; }
+  .greedy-nav a { padding: 0 0.5rem; font-size: 0.7rem; }
+}
+</style>
+</head>
+<body>
+
+<div class="masthead">
+  <div class="masthead-inner">
+    <a href="#" class="masthead-title">Your Name</a>
+    <ul class="greedy-nav">
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</div>
+
+<div class="page-wrap">
+
+  <aside class="sidebar">
+    <div class="author-avatar">YN</div>
+    <div class="author-name">Your Name</div>
+    <div class="author-bio">ML Engineer · Data Scientist · Roboticist</div>
+    <div class="author-location">📍 Your City, Country</div>
+    <hr class="sidebar-divider" />
+    <ul class="sidebar-links">
+      <li><a href="mailto:you@example.com"><span class="si">✉</span> you@example.com</a></li>
+      <li><a href="https://github.com/yourusername" target="_blank"><span class="si">⌥</span> GitHub</a></li>
+      <li><a href="https://linkedin.com/in/yourusername" target="_blank"><span class="si">in</span> LinkedIn</a></li>
+      <li><a href="https://scholar.google.com" target="_blank"><span class="si">Gs</span> Google Scholar</a></li>
+      <li><a href="/resume.pdf" target="_blank"><span class="si">↓</span> Download CV</a></li>
+    </ul>
+    <div class="sidebar-section">
+      <div class="sidebar-section-title">Research interests</div>
+      <div class="sidebar-tags">
+        <span class="sidebar-tag">Robot Learning</span>
+        <span class="sidebar-tag">Computer Vision</span>
+        <span class="sidebar-tag">RL</span>
+        <span class="sidebar-tag">Time Series</span>
+        <span class="sidebar-tag">Sim-to-Real</span>
+        <span class="sidebar-tag">NLP</span>
+        <span class="sidebar-tag">Sensor Fusion</span>
+      </div>
+    </div>
+  </aside>
+
+  <main class="main-content">
+
+    <div class="page-hero">
+      <p class="page-hero-eyebrow">ML Engineer · Data Scientist · Roboticist</p>
+      <h1 class="page-hero-title">Building intelligent systems<br />that perceive, learn, and act.</h1>
+      <p class="page-hero-desc">
+        I work at the intersection of machine learning, robotics, and data science —
+        from model training to robot manipulation to large-scale data pipelines.
+        Currently exploring learning from demonstration and uncertainty-aware perception.
+      </p>
+    </div>
+
+    <!-- PROJECTS -->
+    <section class="content-section" id="projects">
+      <div class="section-title-row">
+        <h2 class="section-heading">Projects</h2>
+        <span class="section-count">6 projects</span>
+      </div>
+
+      <div class="category-section">
+        <div class="category-heading"><span class="cat-dot cat-dot-ml"></span>Machine Learning</div>
+        <div class="archive-grid">
+          <a href="projects/uncertainty-aware-object-detector.html" class="archive-item">
+            <div class="archive-item-header">
+              <span class="archive-item-title">Uncertainty-Aware Object Detector</span>
+              <span class="archive-arrow">↗</span>
+            </div>
+            <p class="archive-item-excerpt">Bayesian extension of YOLOv8 using Monte Carlo Dropout to quantify epistemic uncertainty — robust in out-of-distribution scenes.</p>
+            <div class="archive-item-tags">
+              <span class="atag atag-ml">ML</span>
+              <span class="atag">PyTorch</span>
+              <span class="atag">Bayesian DL</span>
+              <span class="atag">CV</span>
+            </div>
+          </a>
+          <a href="projects/few-shot-fault-classifier.html" class="archive-item">
+            <div class="archive-item-header">
+              <span class="archive-item-title">Few-Shot Fault Classifier</span>
+              <span class="archive-arrow">↗</span>
+            </div>
+            <p class="archive-item-excerpt">Prototypical network on vibration spectrograms detecting industrial faults with as few as 5 examples per class. Deployed on edge hardware.</p>
+            <div class="archive-item-tags">
+              <span class="atag atag-ml">ML</span>
+              <span class="atag">Few-Shot</span>
+              <span class="atag">Signal Processing</span>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <div class="category-section">
+        <div class="category-heading"><span class="cat-dot cat-dot-robot"></span>Robotics</div>
+        <div class="archive-grid">
+          <a href="projects/lfd-manipulation-pipeline.html" class="archive-item">
+            <div class="archive-item-header">
+              <span class="archive-item-title">LfD Manipulation Pipeline</span>
+              <span class="archive-arrow">↗</span>
+            </div>
+            <p class="archive-item-excerpt">Learning from Demonstration for a 6-DOF arm using ACT. Achieved 82% success rate on unseen pick-and-place tasks.</p>
+            <div class="archive-item-tags">
+              <span class="atag atag-robot">Robotics</span>
+              <span class="atag">ROS2</span>
+              <span class="atag">Imitation Learning</span>
+            </div>
+          </a>
+          <a href="projects/visual-slam-on-uav.html" class="archive-item">
+            <div class="archive-item-header">
+              <span class="archive-item-title">Visual SLAM on UAV</span>
+              <span class="archive-arrow">↗</span>
+            </div>
+            <p class="archive-item-excerpt">Real-time monocular SLAM onboard a quadrotor with loop closure and pose graph optimization using ORB-SLAM3.</p>
+            <div class="archive-item-tags">
+              <span class="atag atag-robot">Robotics</span>
+              <span class="atag">SLAM</span>
+              <span class="atag">C++</span>
+              <span class="atag">UAV</span>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <div class="category-section">
+        <div class="category-heading"><span class="cat-dot cat-dot-data"></span>Data Science</div>
+        <div class="archive-grid">
+          <a href="projects/multi-horizon-energy-forecaster.html" class="archive-item">
+            <div class="archive-item-header">
+              <span class="archive-item-title">Multi-Horizon Energy Forecaster</span>
+              <span class="archive-arrow">↗</span>
+            </div>
+            <p class="archive-item-excerpt">Ensemble of N-HiTS and LightGBM for 15-min to 7-day electricity demand forecasting. 18% MAPE improvement over baseline ARIMA.</p>
+            <div class="archive-item-tags">
+              <span class="atag atag-data">Data</span>
+              <span class="atag">Time Series</span>
+              <span class="atag">N-HiTS</span>
+            </div>
+          </a>
+          <a href="projects/geospatial-crop-yield-eda.html" class="archive-item">
+            <div class="archive-item-header">
+              <span class="archive-item-title">Geospatial Crop Yield EDA</span>
+              <span class="archive-arrow">↗</span>
+            </div>
+            <p class="archive-item-excerpt">Satellite NDVI time series with climate covariates to explain regional yield variability over 10 years. Interactive Plotly dashboard.</p>
+            <div class="archive-item-tags">
+              <span class="atag atag-data">Data</span>
+              <span class="atag">GeoPandas</span>
+              <span class="atag">Plotly</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section class="content-section" id="skills">
+      <div class="section-title-row">
+        <h2 class="section-heading">Skills &amp; tools</h2>
+      </div>
+      <div class="skills-grid">
+        <div class="skill-block">
+          <div class="skill-block-title">Machine Learning</div>
+          <ul class="skill-items">
+            <li>PyTorch · TensorFlow</li>
+            <li>Scikit-learn · XGBoost</li>
+            <li>HuggingFace · JAX</li>
+            <li>Reinforcement Learning</li>
+            <li>Bayesian Inference</li>
+          </ul>
+        </div>
+        <div class="skill-block">
+          <div class="skill-block-title">Robotics</div>
+          <ul class="skill-items">
+            <li>ROS / ROS2</li>
+            <li>OpenCV · PCL</li>
+            <li>MoveIt · Gazebo</li>
+            <li>SLAM · Path Planning</li>
+            <li>Sensor Fusion</li>
+          </ul>
+        </div>
+        <div class="skill-block">
+          <div class="skill-block-title">Data Science</div>
+          <ul class="skill-items">
+            <li>Python · R · SQL</li>
+            <li>Pandas · Polars · Spark</li>
+            <li>Matplotlib · Plotly</li>
+            <li>dbt · Airflow</li>
+            <li>Statistical Modeling</li>
+          </ul>
+        </div>
+        <div class="skill-block">
+          <div class="skill-block-title">Infrastructure</div>
+          <ul class="skill-items">
+            <li>Docker · Kubernetes</li>
+            <li>AWS · GCP</li>
+            <li>MLflow · W&amp;B</li>
+            <li>GitHub Actions</li>
+            <li>Linux / Bash</li>
+          </ul>
+        </div>
+        <div class="skill-block">
+          <div class="skill-block-title">Languages</div>
+          <ul class="skill-items">
+            <li>Python (primary)</li>
+            <li>C++ (robotics)</li>
+            <li>MATLAB</li>
+            <li>Julia</li>
+            <li>Rust (learning)</li>
+          </ul>
+        </div>
+        <div class="skill-block">
+          <div class="skill-block-title">Research</div>
+          <ul class="skill-items">
+            <li>Experiment design</li>
+            <li>LaTeX · Overleaf</li>
+            <li>Technical writing</li>
+            <li>Paper review</li>
+            <li>arXiv / lit review</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="content-section" id="contact">
+      <div class="section-title-row">
+        <h2 class="section-heading">Contact</h2>
+      </div>
+      <div class="contact-grid">
+        <div>
+          <p class="contact-intro">Open to research collaborations, full-time roles, and conversations about robots, data, or anything in between.</p>
+          <ul class="contact-links-list">
+            <li><a href="mailto:you@example.com"><span class="ci">✉</span> you@example.com <span class="ck">Email</span></a></li>
+            <li><a href="https://github.com/yourusername" target="_blank"><span class="ci">⌥</span> github.com/yourusername <span class="ck">GitHub</span></a></li>
+            <li><a href="https://linkedin.com/in/yourusername" target="_blank"><span class="ci">in</span> linkedin.com/in/yourusername <span class="ck">LinkedIn</span></a></li>
+            <li><a href="https://scholar.google.com" target="_blank"><span class="ci">Gs</span> Google Scholar <span class="ck">Publications</span></a></li>
+          </ul>
+        </div>
+        <div class="contact-form">
+          <div><label class="form-label">Name</label><input class="form-input" type="text" placeholder="Your name" /></div>
+          <div><label class="form-label">Email</label><input class="form-input" type="email" placeholder="you@example.com" /></div>
+          <div><label class="form-label">Message</label><textarea class="form-textarea" placeholder="What's on your mind?"></textarea></div>
+          <button class="btn-mm">Send message</button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<div class="page-footer">
+  <span>© 2026 Your Name · Powered by GitHub Pages</span>
+  <span>Styled after Minimal Mistakes</span>
+</div>
+
+</body>
+</html>
