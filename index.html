@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Your Name — ML Engineer & Roboticist</title>
+<title>Andrew Haggstrom — ML Engineer & Roboticist</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet" />
 <style>
@@ -50,7 +50,7 @@ a:hover { color: var(--link-hover); text-decoration: underline; }
 
 /* SIDEBAR */
 .sidebar { position: sticky; top: 72px; padding: 2rem 0; }
-.author-avatar { width: 110px; height: 110px; border-radius: 50%; background: #c9d4dc; display: flex; align-items: center; justify-content: center; font-size: 2.2rem; font-weight: 700; color: #fff; margin: 0 auto 1rem; }
+.author-avatar { display: block; width: 110px; height: 110px; border-radius: 50%; background: #c9d4dc; object-fit: cover; font-size: 2.2rem; font-weight: 700; color: #fff; margin: 0 auto 1rem; text-align: center; line-height: 110px; }
 .author-name { font-size: 1.05rem; font-weight: 700; color: var(--text-dark); text-align: center; margin-bottom: 0.25rem; }
 .author-bio { font-size: 0.8125rem; color: var(--muted); text-align: center; line-height: 1.55; margin-bottom: 0.75rem; font-style: italic; }
 .author-location { font-size: 0.8rem; color: var(--muted); text-align: center; margin-bottom: 1.25rem; }
@@ -160,12 +160,11 @@ a:hover { color: var(--link-hover); text-decoration: underline; }
 
 <div class="masthead">
   <div class="masthead-inner">
-    <a href="#" class="masthead-title">Your Name</a>
+    <a href="#" class="masthead-title">Andrew Haggstrom</a>
     <ul class="greedy-nav">
       <li><a href="#projects">Projects</a></li>
       <li><a href="#skills">Skills</a></li>
       <li><a href="#competitions">Competitions</a></li>
-      <li><a href="#contact">Contact</a></li>
     </ul>
   </div>
 </div>
@@ -173,17 +172,16 @@ a:hover { color: var(--link-hover); text-decoration: underline; }
 <div class="page-wrap">
 
   <aside class="sidebar">
-    <div class="author-avatar">YN</div>
-    <div class="author-name">Your Name</div>
+    <img src="external-files/Headshot.jpeg" alt="Andrew Haggstrom" class="author-avatar" />
+    <div class="author-name">Andrew Haggstrom</div>
     <div class="author-bio">ML Engineer · Data Scientist · Roboticist</div>
-    <div class="author-location">📍 Your City, Country</div>
+    <div class="author-location">📍 Pittsburg, United States</div>
     <hr class="sidebar-divider" />
     <ul class="sidebar-links">
-      <li><a href="mailto:you@example.com"><span class="si">✉</span> you@example.com</a></li>
-      <li><a href="https://github.com/yourusername" target="_blank"><span class="si">⌥</span> GitHub</a></li>
-      <li><a href="https://linkedin.com/in/yourusername" target="_blank"><span class="si">in</span> LinkedIn</a></li>
-      <li><a href="https://scholar.google.com" target="_blank"><span class="si">Gs</span> Google Scholar</a></li>
-      <li><a href="/resume.pdf" target="_blank"><span class="si">↓</span> Download CV</a></li>
+      <li><a href="mailto:andrewhaggstrom@gmail.com"><span class="si">✉</span> andrewhaggstrom@gmail.com</a></li>
+      <li><a href="https://github.com/andrewhaggstrom0" target="_blank"><span class="si">⌥</span> GitHub</a></li>
+      <li><a href="https://www.linkedin.com/in/andrewhaggstrom/" target="_blank"><span class="si">in</span> LinkedIn</a></li>
+      <li><a href="external-files/resume.pdf" target="_blank"><span class="si">↓</span> Download CV</a></li>
     </ul>
     <div class="sidebar-section">
       <div class="sidebar-section-title">Research interests</div>
@@ -205,9 +203,9 @@ a:hover { color: var(--link-hover); text-decoration: underline; }
       <p class="page-hero-eyebrow">ML Engineer · Data Scientist · Roboticist</p>
       <h1 class="page-hero-title">Building intelligent systems<br />that perceive, learn, and act.</h1>
       <p class="page-hero-desc">
-        I work at the intersection of machine learning, robotics, and data science —
-        from model training to robot manipulation to large-scale data pipelines.
-        Currently exploring learning from demonstration and uncertainty-aware perception.
+        I work at the intersection of machine learning, robotics, management, and data science. I've created novel ML models, built robotic systems, 
+        and deployed large-scale data pipelines. Currently, I am attending Carnegie Mellon for a Masters of Science in Robotic Systems Development 
+        to gain specific technical skills paired with product intuition.
       </p>
     </div>
 
@@ -458,6 +456,26 @@ a:hover { color: var(--link-hover); text-decoration: underline; }
         </div>
         <div class="competition-item">
           <div>
+            <div class="competition-name">Regional Sling Health (PylonIQ)</div>
+            <p class="competition-desc">Add a description of your role and outcome here.</p>
+            <div class="competition-tags">
+              <span class="atag">Biomedical</span>
+            </div>
+          </div>
+          <div class="competition-result"></div>
+        </div>
+        <div class="competition-item">
+          <div>
+            <div class="competition-name">BME Day (PylonIQ)</div>
+            <p class="competition-desc">Add a description of your role and outcome here.</p>
+            <div class="competition-tags">
+              <span class="atag">Biomedical</span>
+            </div>
+          </div>
+          <div class="competition-result"></div>
+        </div>
+        <div class="competition-item">
+          <div>
             <div class="competition-name">Mayfield Hackathon</div>
             <p class="competition-desc">Add a description of your role and outcome here.</p>
             <div class="competition-tags">
@@ -509,35 +527,11 @@ a:hover { color: var(--link-hover); text-decoration: underline; }
       </div>
     </section>
 
-    <!-- CONTACT -->
-    <section class="content-section" id="contact">
-      <div class="section-title-row">
-        <h2 class="section-heading">Contact</h2>
-      </div>
-      <div class="contact-grid">
-        <div>
-          <p class="contact-intro">Open to research collaborations, full-time roles, and conversations about robots, data, or anything in between.</p>
-          <ul class="contact-links-list">
-            <li><a href="mailto:you@example.com"><span class="ci">✉</span> you@example.com <span class="ck">Email</span></a></li>
-            <li><a href="https://github.com/yourusername" target="_blank"><span class="ci">⌥</span> github.com/yourusername <span class="ck">GitHub</span></a></li>
-            <li><a href="https://linkedin.com/in/yourusername" target="_blank"><span class="ci">in</span> linkedin.com/in/yourusername <span class="ck">LinkedIn</span></a></li>
-            <li><a href="https://scholar.google.com" target="_blank"><span class="ci">Gs</span> Google Scholar <span class="ck">Publications</span></a></li>
-          </ul>
-        </div>
-        <div class="contact-form">
-          <div><label class="form-label">Name</label><input class="form-input" type="text" placeholder="Your name" /></div>
-          <div><label class="form-label">Email</label><input class="form-input" type="email" placeholder="you@example.com" /></div>
-          <div><label class="form-label">Message</label><textarea class="form-textarea" placeholder="What's on your mind?"></textarea></div>
-          <button class="btn-mm">Send message</button>
-        </div>
-      </div>
-    </section>
-
   </main>
 </div>
 
 <div class="page-footer">
-  <span>© 2026 Your Name · Powered by GitHub Pages</span>
+  <span>© 2026 Andrew Haggstrom · Powered by GitHub Pages</span>
   <span>Styled after Minimal Mistakes</span>
 </div>
 
