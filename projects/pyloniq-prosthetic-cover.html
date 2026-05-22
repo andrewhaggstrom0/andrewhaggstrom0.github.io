@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Arduino Stress Project — Your Name</title>
+<title>PylonIQ Prosthetic Cover — Your Name</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet" />
 <style>
@@ -60,22 +60,23 @@ a:hover { color:var(--link-hover); text-decoration:underline; }
 </div>
 <div class="project-page">
   <a href="../index.html#projects" class="back-link">&larr; All Projects</a>
-  <h1 class="project-title">Arduino Stress Project</h1>
+  <h1 class="project-title">PylonIQ Prosthetic Cover</h1>
   <div class="project-tags">
-    <span class="ptag ptag">Arduino</span>
+    <span class="ptag">Biomedical</span>
     <span class="ptag">Hardware</span>
+    <span class="ptag">Android</span>
   </div>
   <div class="project-body">
     <h2>Overview</h2>
-    <p>A self-contained biometric wearable built on Arduino that continuously monitors physiological stress indicators throughout the day. The device captures SpO2, heart rate, and heart rate variability (HRV) from the user, establishes a personalized baseline in a resting state, and flags stress events using signal-processing techniques and thresholds derived from peer-reviewed literature. These components are all housed in a custom-built enclosure with a full-day rechargeable battery.</p>
+    <p>A smart prosthetic pylon cover designed for below-the-knee amputees that combines aesthetic customization with embedded gait analysis and maintenance monitoring. Built as a capstone project in partnership with Phoenix Biomedical, the device addresses the 11&ndash;22% prosthetic abandonment rate driven by aesthetic dissatisfaction and lack of maintenance awareness. The design delivers a 3D-printed, patient-customizable cover with onboard IMU sensing and an Android companion app. This project was selected as the top capstone project in a department-wide competition among all graduating Biomedical Engineering seniors.</p>
     <h2>Key Features</h2>
     <ul>
-      <li><strong>Custom hardware build:</strong> Designed and assembled a full enclosure around an Arduino Nano microcontroller, integrating an SpO2/heart rate sensor, tactile buttons, and status LEDs, with an embedded rechargeable lithium-ion battery sized for all-day operation without requiring a power tether.</li>
-      <li><strong>Multi-modal physiological sensing with signal processing:</strong> Firmware written in C++ using the Arduino IDE continuously samples SpO2, heart rate, and HRV, running each signal through a bandpass filter to isolate physiologically relevant frequency bands and a moving average to smooth transient noise — producing clean, stable readings suitable for threshold-based classification on the Nano's constrained hardware.</li>
-      <li><strong>Baseline-calibrated stress detection:</strong> On startup, the device captures a resting-state baseline per user in a low-stress environment; stress thresholds are then derived as deviations from that baseline, informed by values established in academic literature on autonomic nervous system response, giving the detection logic a physiologically grounded reference rather than a static one-size-fits-all cutoff.</li>
+      <li><strong>Custom 3D-printed enclosure:</strong> The pylon cover is manufactured from PLA via FDM 3D printing, available in 110 colors and scalable in CAD to fit adult prosthetic pylon lengths from the 5th to 95th height percentile; the two-piece design uses embedded magnets for tool-free attachment and detachment averaging under 3 seconds, weighs 263g, withstands horizontal impacts up to 1,493N, and carries an IPX4 waterproof rating.</li>
+      <li><strong>Arduino Nano RP2040 with IMU-based gait analysis:</strong> An IMU sampling at 42 Hz collects 3-axis accelerometer and gyroscope data; firmware written in C++ on the Arduino IDE establishes a user-specific gait baseline on first use and continuously flags deviations, with data transmitted over Bluetooth to the companion app at an average latency of 29ms; a rechargeable lithium-ion battery pack powers the system for over 15 hours on a single charge, recharging fully in 5.5 hours.</li>
+      <li><strong>Android companion app in Kotlin:</strong> Built natively in Kotlin for Android, the app pairs with the Arduino over Bluetooth, displays daily walking reports, and issues alerts for irregular gait or predicted maintenance needs; data is stored locally and exportable as CSV for gait analysis; UI was designed to WCAG-aligned text size standards and validated for usability across a 20-person focus group.</li>
     </ul>
     <h2>Results</h2>
-    <p>Produced a fully functional day-wear prototype on the Arduino Nano that reliably acquires and processes multi-modal biometric signals, with stress detection logic validated against published physiological benchmarks and a hardware form factor compact enough for continuous real-world use.</p>
+    <p>The prototype passed 14 of 15 verification tests, with 100% Bluetooth data completeness, sub-30ms transmission latency, and a total BOM cost of $35.87. Mechanical validation with 28 participants yielded 100% reporting the device was very easy to detach and over 90% rating attachment as very easy. Phoenix Biomedical validated that the device meets all stated mechanical, electrical, and aesthetic requirements, with IRB approval pending for clinical trials with prosthetic users.</p>
   </div>
 </div>
 <div class="page-footer">

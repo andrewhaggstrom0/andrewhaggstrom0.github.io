@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Robotics Goggle Project — Your Name</title>
+<title>Smart Glasses — Your Name</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet" />
 <style>
@@ -60,23 +60,22 @@ a:hover { color:var(--link-hover); text-decoration:underline; }
 </div>
 <div class="project-page">
   <a href="../index.html#projects" class="back-link">&larr; All Projects</a>
-  <h1 class="project-title">Robotics Goggle Project</h1>
+  <h1 class="project-title">Smart Glasses</h1>
   <div class="project-tags">
     <span class="ptag ptag-robot">Robotics</span>
     <span class="ptag">CV</span>
   </div>
   <div class="project-body">
-    <p>Add a short summary of this project here.</p>
     <h2>Overview</h2>
-    <p>Describe what this project is and why you built it.</p>
+    <p>A wearable computer vision system embedded in a glasses frame that passively tracks the user's environment and answers natural-language queries about object locations. A microcontroller-mounted camera streams first-person frames over BLE to a Swift-based iOS app, which runs on-device inference and routes contextual data to a Gemini AI integration. This stack maintains a deduplicated object history that users can query in real time.</p>
     <h2>Key Features</h2>
     <ul>
-      <li>Feature or contribution 1</li>
-      <li>Feature or contribution 2</li>
-      <li>Feature or contribution 3</li>
+      <li><strong>Embedded hardware pipeline:</strong> A microcontroller and camera module built into the glasses frame, powered by an onboard battery pack, capture continuous first-person RGB frames and transmit them via BLE to the companion iOS app for processing.</li>
+      <li><strong>On-device object detection with YOLO26n:</strong> YOLO26, released in September 2025, is the newest member of the YOLO family, purpose-built for efficiency and deployment readiness on edge and low-power devices, making it well-suited for real-time inference on constrained mobile hardware; detected objects and bounding box metadata are extracted per frame before being passed downstream.</li>
+      <li><strong>Gemini-powered scene contextualization:</strong> Cropped frame regions and object metadata are sent to a Gemini API integration (Python backend) which generates natural-language scene descriptions; a deduplication layer compares incoming descriptions against stored entries and replaces stale records rather than appending, keeping the SQLite object history storage-efficient; the iOS frontend is built entirely in Swift, communicating with the backend over a REST interface.</li>
     </ul>
     <h2>Results</h2>
-    <p>Describe your outcomes, metrics, or impact here.</p>
+    <p>Delivered a fully integrated prototype spanning embedded firmware, a Swift iOS app, and a Python AI backend that is capable of passively logging object placements from a wearable form factor and recalling their last known location through a natural-language interface.</p>
   </div>
 </div>
 <div class="page-footer">
