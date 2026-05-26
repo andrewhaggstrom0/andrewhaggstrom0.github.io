@@ -66,17 +66,17 @@ a:hover { color:var(--link-hover); text-decoration:underline; }
     <span class="ptag">C++</span>
   </div>
   <div class="project-body">
-    <p>Add a short summary of this project here.</p>
+    <p>Through Engineers Test Kitchen, WashU's engineering consulting club, developed a computer vision system for Independent Staves Company to automate the manual counting of wood stave pallets — a labor-intensive process requiring workers to hand-count 600–700 staves per pallet. The solution uses a two-stage YOLO-based detection pipeline to localize and count individual staves from a single image, eliminating the need for manual counting on the factory floor.</p>
     <h2>Overview</h2>
-    <p>Describe what this project is and why you built it.</p>
+    <p>The pipeline was designed to handle cluttered warehouse environments with varying lighting and pallet orientations, and is packaged as a client-deployable web application requiring no ML expertise to operate.</p>
     <h2>Key Features</h2>
     <ul>
-      <li>Feature or contribution 1</li>
-      <li>Feature or contribution 2</li>
-      <li>Feature or contribution 3</li>
+      <li><strong>Two-stage YOLO detection pipeline:</strong> A first-stage Ultralytics YOLO localizer model crops and isolates the target stave pallet from cluttered background staves, feeding the cropped region into a second-stage YOLO counter model that detects and counts individual staves. The counter model was fine-tuned on 49 domain-specific stave images and pre-trained on 1,000+ wood plank images sourced from Roboflow to improve generalization across varying warehouse lighting and pallet orientations.</li>
+      <li><strong>Pseudo-label data pipeline with CVAT annotation:</strong> Built a semi-automated labeling workflow where incoming client images are first run through the current model to generate pseudo-labels, which are then uploaded to CVAT for human review and correction, reducing annotation time compared to labeling from scratch. Training was conducted on Google Colab with GPU acceleration.</li>
+      <li><strong>FastAPI web application deployment:</strong> Designed a client-deployable web application using a FastAPI backend, HTML/CSS frontend, and ONNX runtime inference engine for optimized model inference speed, containerized via Docker for portability and ease of deployment on client hardware without additional setup.</li>
     </ul>
     <h2>Results</h2>
-    <p>Describe your outcomes, metrics, or impact here.</p>
+    <p>The current model detects 70–80% of ground truth stave counts across test pallets, with ongoing retraining on expanded labeled data actively improving accuracy. The deployment-ready web application provides the client a free-to-run interface requiring no ML expertise to operate.</p>
   </div>
 </div>
 <div class="page-footer">

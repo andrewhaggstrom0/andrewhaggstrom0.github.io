@@ -66,17 +66,17 @@ a:hover { color:var(--link-hover); text-decoration:underline; }
     <span class="ptag">Bioinformatics</span>
   </div>
   <div class="project-body">
-    <p>Add a short summary of this project here.</p>
+    <p>Applied unsupervised machine learning to high-dimensional cerebrospinal fluid (CSF) proteomics data to identify molecular subtypes of Parkinson's Disease, motivated by the clinical heterogeneity of PD and the success of analogous subtyping frameworks in Alzheimer's research. Using a 1,158-sample cohort from the Parkinson's Progression Markers Initiative (PPMI) with over 4,000 protein measurements collected via SomaScan Assay, the project sought to uncover biologically interpretable protein co-expression modules that may correspond to distinct disease pathways rather than relying solely on symptom-based clinical classifications.</p>
     <h2>Overview</h2>
-    <p>Describe what this project is and why you built it.</p>
+    <p>Data was partitioned into two analysis cohorts: a 552-sample Healthy vs. Sporadic PD dataset and a 973-sample PD-only dataset combining sporadic and genetic cases. The analysis systematically benchmarked multiple dimensionality reduction and clustering approaches before converging on NMF-based subtyping.</p>
     <h2>Key Features</h2>
     <ul>
-      <li>Feature or contribution 1</li>
-      <li>Feature or contribution 2</li>
-      <li>Feature or contribution 3</li>
+      <li><strong>Data preprocessing and feature engineering pipeline:</strong> Selected the top 1,000 most variable CSF protein features to maximize biological signal-to-noise ratio, removed technical and biological confounders using an OLS regression model, and applied Z-score standardization across features.</li>
+      <li><strong>Systematic evaluation of dimensionality reduction and clustering algorithms:</strong> Benchmarked linear dimensionality reduction methods including PCA, SVD, NMF, and Sparse NMF combined with KMeans, Gaussian Mixture Models, DBSCAN, and HDBSCAN clustering against the Adjusted Rand Index metric. Extended evaluation to non-linear UMAP reduction across a parameter grid spanning neighbor counts of 10–50 and minimum distances of 0.0–0.3. All linear and UMAP-based approaches produced near-zero ARI scores on the healthy vs. sporadic PD separation task, reflecting the high-dimensional, overlapping nature of the protein expression space.</li>
+      <li><strong>NMF-based molecular subtyping of PD patients:</strong> Applied Non-negative Matrix Factorization across K values 2–8 on the PD-only cohort, using reconstruction error and elbow analysis to identify K=4 as the optimal number of molecular modules. The W matrix encoded per-patient module expression weights while the H matrix identified the top contributing proteins per module. Biological interpretation of the top 15 proteins per module suggested four distinct disease programs: RNA-binding protein dysregulation and stress granule formation, immune pathway activation including antigen presentation, endoplasmic reticulum stress and unfolded protein response disruption, and lysosomal dysfunction with lipid metabolism dysregulation.</li>
     </ul>
     <h2>Results</h2>
-    <p>Describe your outcomes, metrics, or impact here.</p>
+    <p>Identified four biologically interpretable molecular subtype candidates in a cohort of 973 PD patients, each mapping to a distinct neurodegeneration-relevant pathway supported by peer-reviewed literature — providing a preliminary framework for precision medicine approaches to PD treatment targeting specific biological mechanisms rather than uniform symptom-based classification.</p>
   </div>
 </div>
 <div class="page-footer">

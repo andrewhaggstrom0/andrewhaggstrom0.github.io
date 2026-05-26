@@ -66,17 +66,17 @@ a:hover { color:var(--link-hover); text-decoration:underline; }
     <span class="ptag">Python</span>
   </div>
   <div class="project-body">
-    <p>Add a short summary of this project here.</p>
+    <p>Designed and implemented a normalized relational database in SQL to model the Madrid Metro Network's client and fare management system. The database handles client registration, zone-based fare calculation, and transit card management, built with a focus on minimizing redundancy and ensuring data integrity through a structured schema and event-driven triggers.</p>
     <h2>Overview</h2>
-    <p>Describe what this project is and why you built it.</p>
+    <p>The schema was architected to decouple pricing and zone logic from business rules, allowing independent rate updates without modifying trigger code — a deliberate design choice for maintainability.</p>
     <h2>Key Features</h2>
     <ul>
-      <li>Feature or contribution 1</li>
-      <li>Feature or contribution 2</li>
-      <li>Feature or contribution 3</li>
+      <li><strong>Normalized relational schema in SQL:</strong> Architected a 14-table schema spanning client profiles, recharge cards, address records, zone lookup tables (Zone A through E2), and pricing reference tables for normal rates, flat rates, and discounts. Tables are linked via primary and foreign key relationships on ClientID, with pricing and zone tables intentionally decoupled from trigger logic to allow independent rate updates without modifying business rules.</li>
+      <li><strong>Automated trigger system:</strong> Implemented four categories of SQL triggers covering client category assignment (Joven/Normal/Senior) based on age and student status, geographic zone assignment on address insert or update, card validity management enforcing 30-day expiration on RechargeCards and zero-balance invalidation on MultiEntranceCards, and dynamic card fee recalculation that fires automatically on changes to client demographics, address, or plan type.</li>
+      <li><strong>Query and reporting layer:</strong> Wrote relational algebra expressions and corresponding SQL queries to generate operational reports including zone-filtered client reports with associated card fees and cross-table card validity lookups using outer joins between the Client and RechargeCard tables.</li>
     </ul>
     <h2>Results</h2>
-    <p>Describe your outcomes, metrics, or impact here.</p>
+    <p>Delivered a fully functional, trigger-automated SQL database that correctly handles the full client lifecycle — including registration, card recharge, address changes, card replacement, and deregistration — with cascading deletes maintaining referential integrity across all related tables.</p>
   </div>
 </div>
 <div class="page-footer">

@@ -66,17 +66,17 @@ a:hover { color:var(--link-hover); text-decoration:underline; }
     <span class="ptag">Autonomous</span>
   </div>
   <div class="project-body">
-    <p>Add a short summary of this project here.</p>
+    <p>As a founding member of the WashU AI Racing Club, contributed to building a fully autonomous Formula Student race car from the ground up in the club's inaugural year. The software stack spans perception, path planning, and controls, architected entirely in-house and deployed on an NVIDIA Jetson Orin, with the team qualifying to compete at Formula Student AI (FS-AI) in London.</p>
     <h2>Overview</h2>
-    <p>Describe what this project is and why you built it.</p>
+    <p>The perception system is responsible for detecting and localizing track boundary cones in 3D space in real time, feeding low-latency positional data downstream to path planning and controls.</p>
     <h2>Key Features</h2>
     <ul>
-      <li>Feature or contribution 1</li>
-      <li>Feature or contribution 2</li>
-      <li>Feature or contribution 3</li>
+      <li><strong>Multi-modal sensor fusion for cone detection:</strong> Leveraged stereo depth cameras, LiDAR, and RGB cameras in tandem to detect Formula Student boundary cones and resolve their positions in 3D space. Point cloud clustering algorithms identify cone centers from LiDAR returns, while the RGB pipeline provides class-level identification to distinguish cone types across track configurations.</li>
+      <li><strong>Fine-tuned YOLO26n for Formula Student environments:</strong> A lightweight YOLO26n model was fine-tuned on the Formula Student Cones Computer Vision Dataset (Roboflow Universe) to optimize detection accuracy for the specific cone colors, lighting, and track geometry encountered in FS-AI competition. GPU acceleration was used to expedite fine-tuning, and the resulting model was optimized for low-latency inference on the onboard Jetson Orin.</li>
+      <li><strong>ROS-based software stack with computational efficiency as a design constraint:</strong> The full perception pipeline was written in Python and integrated into a ROS architecture running in a Dockerized Ubuntu environment for hardware portability and reproducibility. C++ was used selectively in latency-critical modules where Python's overhead was prohibitive, reflecting a deliberate emphasis on computationally efficient algorithms capable of supporting real-time decision-making at race speeds.</li>
     </ul>
     <h2>Results</h2>
-    <p>Describe your outcomes, metrics, or impact here.</p>
+    <p>In the club's first year of existence, the team built a competition-ready autonomous software stack from scratch and earned a berth to compete at Formula Student AI in London, one of the premier international autonomous motorsport competitions for university teams.</p>
   </div>
 </div>
 <div class="page-footer">

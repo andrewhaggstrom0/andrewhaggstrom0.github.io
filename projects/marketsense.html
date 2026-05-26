@@ -66,17 +66,17 @@ a:hover { color:var(--link-hover); text-decoration:underline; }
     <span class="ptag">NLP</span>
   </div>
   <div class="project-body">
-    <p>Add a short summary of this project here.</p>
+    <p>MarketLens is an end-to-end financial market intelligence platform designed to make complex market signals accessible to non-expert users. The system ingests equity prices, macroeconomic indicators, and SEC regulatory filings into a Snowflake data warehouse, transforms raw data into standardized analytical signals through dbt, and surfaces those signals through a Streamlit dashboard and a retrieval-augmented LLM explanation layer — built as an interpretability tool rather than a trading or prediction system.</p>
     <h2>Overview</h2>
-    <p>Describe what this project is and why you built it.</p>
+    <p>The platform's central design principle is auditability: every signal traces back through dbt transformations to raw source data, and the AI layer is explicitly constrained to explanation rather than prediction, serving users across three expertise modes.</p>
     <h2>Key Features</h2>
     <ul>
-      <li>Feature or contribution 1</li>
-      <li>Feature or contribution 2</li>
-      <li>Feature or contribution 3</li>
+      <li><strong>Multi-source ingestion pipeline orchestrated with Apache Airflow:</strong> Built source-specific Python producers for yfinance OHLCV equity data, Snowflake Marketplace macroeconomic indicators, FRED economic time series (GDP, CPI, housing starts, consumer sentiment), and SEC EDGAR filing metadata and narratives. The Airflow DAG schedules daily ingestion, triggers dbt transformations, and writes task status to a PIPELINE_RUN_LOG table. All Snowflake writes use MERGE INTO statements keyed on stable identifiers for idempotency, and external API calls use bounded retry logic and fallback chains to prevent partial failures from propagating downstream.</li>
+      <li><strong>dbt signal engineering layer on Snowflake:</strong> Implemented a two-layer dbt project consisting of staging models that clean and standardize raw data and mart models that generate seven price-based signals (daily returns, rolling volatility, anomaly z-scores, RSI-14, moving-average crossovers, drawdown severity, and sector rotation) and eight macroeconomic signals (Fed rate changes, CPI changes, yield curve inversion, GDP contraction, and sentiment shifts). All signals are unified into a standardized six-column signal_summary schema — date, signal type, entity, magnitude, salience score, and summary text — serving as the shared interface between the data pipeline, dashboard, and AI layer. Data quality is enforced through dbt tests for null handling, accepted value ranges, RSI bounds, and positive salience scores.</li>
+      <li><strong>Kafka streaming pipeline and Streamlit frontend with RAG-based AI interface:</strong> A simulated Kafka tick producer generates Geometric Brownian Motion-style price events consumed by three independent consumers: a Snowflake persistence consumer, a live dashboard state consumer, and a streaming anomaly detection consumer tracking rolling z-scores per ticker. The Streamlit frontend serves four views covering stock deep-dives, macro overlay, signal chat, and pipeline health monitoring. The AI interface uses retrieval-augmented generation by detecting user intent, querying matching Snowflake views, assembling an expertise-mode-aware prompt, and calling Snowflake Cortex with llama3.1-70b to produce grounded, non-predictive explanations across three user modes: Just Curious, Know the Basics, and Financial Analyst.</li>
     </ul>
     <h2>Results</h2>
-    <p>Describe your outcomes, metrics, or impact here.</p>
+    <p>Delivered a fully functional prototype with a measured warm-query latency of 227ms on stock price views, 101 passing pytest cases across 11 test files, and a dual batch-streaming architecture that correctly generates and serves signals from over 125 million warehouse rows while keeping analytical logic fully auditable through traceable dbt transformations.</p>
   </div>
 </div>
 <div class="page-footer">
