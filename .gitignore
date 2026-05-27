@@ -1,0 +1,17 @@
+# Claude
+CLAUDE.md
+.claude/
+memory/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editors
+.vscode/
+.idea/
+*.swp
+*~
+
+# Logs
+*.log
