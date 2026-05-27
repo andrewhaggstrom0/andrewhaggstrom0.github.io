@@ -50,7 +50,7 @@ a:hover { color:var(--link-hover); text-decoration:underline; }
 <body>
 <div class="masthead">
   <div class="masthead-inner">
-    <a href="../index.html" class="masthead-title">Your Name</a>
+    <a href="../index.html" class="masthead-title">Andrew Haggstrom</a>
     <ul class="greedy-nav">
       <li><a href="../index.html#projects">Projects</a></li>
       <li><a href="../index.html#skills">Skills</a></li>
@@ -66,17 +66,16 @@ a:hover { color:var(--link-hover); text-decoration:underline; }
     <span class="ptag">Healthcare</span>
   </div>
   <div class="project-body">
-    <p>Add a short summary of this project here.</p>
     <h2>Overview</h2>
-    <p>Describe what this project is and why you built it.</p>
+    <p>Built a supervised machine learning pipeline in Python to predict early mechanical ventilation usage in ICU patients admitted for respiratory illnesses, using the publicly available MIMIC-III clinical database. The project addressed a gap in existing literature by building a generalizable model across multiple respiratory diagnoses, including ARDS, COPD, pneumonia, respiratory distress, and asthma, rather than focusing on a single condition, with the goal of supporting ICU resource allocation and early clinical intervention decisions.</p>
     <h2>Key Features</h2>
     <ul>
-      <li>Feature or contribution 1</li>
-      <li>Feature or contribution 2</li>
-      <li>Feature or contribution 3</li>
+      <li><strong>Clinical cohort construction and feature engineering from MIMIC-III:</strong> Queried and joined multiple MIMIC-III tables including ADMISSIONS, ICUSTAYS, LABEVENTS, PROCEDUREEVENTSMV, DATETIMEEVENTS, DITEMS, and DLABITEMS to construct a 955-patient emergency MICU cohort with 108 features derived from the first 24 hours of admission; features included arterial blood gas measurements (oxygen saturation, pH, PaCO2, base excess), urinary output counts, comorbidity flags, demographics, and insurance type; missing data was handled by dropping columns exceeding 30% missingness and applying KNN imputation to remaining gaps, with temporal vitals aggregated into mean, standard deviation, min, and max statistics across the 24-hour window.</li>
+      <li><strong>Multi-model benchmark with class imbalance handling and hyperparameter tuning:</strong> Implemented and benchmarked five classifiers in Python including Logistic Regression, Random Forest, SVM, XGBoost, and a soft Voting Ensemble Model; addressed the 80/20 class imbalance through SMOTE, ADASYN, class weight adjustments, scale_pos_weight tuning in XGBoost, and stratified train-test splitting; hyperparameters were tuned using GridSearchCV with cross-validation, covering n_estimators, max_depth, learning rate, gamma, alpha, subsample, colsample, and SVM C and gamma parameters; tuning improved recall across all five models with Logistic Regression doubling its recall score from 0.29 to 0.54.</li>
+      <li><strong>SHAP-based model explainability and feature importance analysis:</strong> Evaluated feature importance across F-score, Mutual Information, and Random Forest Importance metrics, identifying urinary output measurement frequency and standard deviation features of O2Sat, pH, PaCO2, and Base Excess as consistently top-ranked predictors across all methods; generated SHAP plots for all five models to validate that high-importance features aligned with clinically meaningful indicators of physiological deterioration rather than spurious correlations.</li>
     </ul>
     <h2>Results</h2>
-    <p>Describe your outcomes, metrics, or impact here.</p>
+    <p>XGBoost achieved the best performance with an AUROC of 0.790 and AUPRC of 0.526 after hyperparameter tuning, with recall improving to 0.54 on the ventilated class; non-ventilated class precision and recall exceeded 0.80 across most models, supporting risk stratification use cases; SHAP analysis confirmed consistent clinical validity of top features across all model architectures.</p>
   </div>
 </div>
 <div class="page-footer">
