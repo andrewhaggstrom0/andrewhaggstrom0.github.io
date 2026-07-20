@@ -50,7 +50,7 @@ a:hover { color: var(--link-hover); text-decoration: underline; }
 .ptag { font-size: 0.6875rem; font-weight: 700; background: var(--tag-bg); color: var(--tag-text); padding: 3px 8px; border-radius: 3px; text-transform: uppercase; letter-spacing: 0.04em; }
 .ptag-ml { background: var(--ml-bg); color: var(--ml); }
 .ptag-robot { background: var(--robot-bg); color: var(--robot); }
-.project-links { margin-bottom: 1.5rem; }
+.project-links { margin-bottom: 1.5rem; display: flex; flex-wrap: wrap; gap: 1.25rem; }
 .project-links a { font-size: 0.8125rem; font-weight: 700; }
 .project-body { font-size: 0.9375rem; color: var(--text); line-height: 1.7; }
 .project-body p { margin-bottom: 1rem; }
@@ -88,7 +88,8 @@ a:hover { color: var(--link-hover); text-decoration: underline; }
     <span class="ptag">HF Transformers</span>
   </div>
   <div class="project-links">
-    <a href="https://github.com/yourusername" target="_blank" rel="noopener">View on GitHub &rarr;</a>
+    <a href="https://github.com/andrewhaggstrom0/geom-vla-priors" target="_blank" rel="noopener">View on GitHub &rarr;</a>
+    <a href="../external-files/geom_vla_report.pdf" target="_blank" rel="noopener">Read the Paper (PDF) &rarr;</a>
   </div>
   <div class="project-body">
     <p>How much manipulation robustness can the cheapest possible geometric prior buy? I injected a single geometry token — free simulator depth, converted to a world-frame point cloud and encoded by a ~18M-parameter PointNet — into the 7B OpenVLA-OFT policy, then measured per-axis robustness across the 2,519 perturbed tasks of the LIBERO-Plus benchmark.</p>
