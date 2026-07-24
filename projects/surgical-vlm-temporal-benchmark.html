@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Surgical VLM Temporal Benchmark — Andrew Haggstrom</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet" />
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; }
+
+:root {
+  --bg:           #fff;
+  --text:         #494e52;
+  --text-dark:    #1a1d1e;
+  --muted:        #6f777d;
+  --border:       #f2f3f3;
+  --border-dark:  #dee0e2;
+  --link:         #0092ca;
+  --link-hover:   #006f9b;
+  --tag-bg:       #f2f3f3;
+  --tag-text:     #494e52;
+  --ml:           #0b6e4e;
+  --ml-bg:        #e8f5f0;
+  --robot:        #6d3f9e;
+  --robot-bg:     #f0eaf7;
+  --font:         Lato, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --font-serif:   Georgia, Times, 'Times New Roman', serif;
+  --font-mono:    'Lucida Console', Courier, monospace;
+}
+
+body { font-family: var(--font); font-size: 16px; line-height: 1.5; color: var(--text); background: var(--bg); -webkit-font-smoothing: antialiased; }
+a { color: var(--link); text-decoration: none; }
+a:hover { color: var(--link-hover); text-decoration: underline; }
+
+.masthead { position: sticky; top: 0; z-index: 200; background: var(--bg); border-bottom: 1px solid var(--border-dark); }
+.masthead-inner { max-width: 1280px; margin: 0 auto; padding: 0 1.5rem; display: flex; align-items: center; justify-content: space-between; height: 56px; }
+.masthead-title { font-size: 1rem; font-weight: 700; color: var(--text-dark); text-decoration: none; }
+.masthead-title:hover { color: var(--link); text-decoration: none; }
+.greedy-nav { display: flex; list-style: none; }
+.greedy-nav a { display: block; padding: 0 0.85rem; font-size: 0.8125rem; font-weight: 700; color: var(--text); text-transform: uppercase; letter-spacing: 0.05em; line-height: 56px; border-bottom: 2px solid transparent; transition: color 0.15s, border-color 0.15s; }
+.greedy-nav a:hover { color: var(--link); text-decoration: none; border-bottom-color: var(--link); }
+
+.project-page { max-width: 800px; margin: 0 auto; padding: 2.5rem 1.5rem 4rem; }
+.back-link { font-size: 0.8125rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); margin-bottom: 2rem; display: inline-block; }
+.back-link:hover { color: var(--link); text-decoration: none; }
+.project-title { font-family: var(--font-serif); font-size: 2rem; font-weight: 400; color: var(--text-dark); line-height: 1.2; margin-bottom: 0.75rem; }
+.project-tags { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 1rem; }
+.ptag { font-size: 0.6875rem; font-weight: 700; background: var(--tag-bg); color: var(--tag-text); padding: 3px 8px; border-radius: 3px; text-transform: uppercase; letter-spacing: 0.04em; }
+.ptag-ml { background: var(--ml-bg); color: var(--ml); }
+.ptag-robot { background: var(--robot-bg); color: var(--robot); }
+.project-links { margin-bottom: 1.5rem; display: flex; flex-wrap: wrap; gap: 1.25rem; }
+.project-links a { font-size: 0.8125rem; font-weight: 700; }
+.project-body { font-size: 0.9375rem; color: var(--text); line-height: 1.7; }
+.project-body p { margin-bottom: 1rem; }
+.project-body h2 { font-family: var(--font-serif); font-size: 1.35rem; font-weight: 400; color: var(--text-dark); margin: 2rem 0 0.75rem; }
+.project-body ul { margin: 0 0 1rem 1.5rem; }
+.project-body li { margin-bottom: 0.35rem; }
+
+.page-footer { border-top: 1px solid var(--border); padding: 1.5rem; max-width: 1280px; margin: 0 auto; display: flex; justify-content: space-between; font-size: 0.75rem; color: var(--muted); }
+</style>
+</head>
+<body>
+
+<div class="masthead">
+  <div class="masthead-inner">
+    <a href="../index.html" class="masthead-title">Andrew Haggstrom</a>
+    <ul class="greedy-nav">
+      <li><a href="../index.html#projects">Projects</a></li>
+      <li><a href="../index.html#skills">Skills</a></li>
+      <li><a href="../index.html#contact">Contact</a></li>
+    </ul>
+  </div>
+</div>
+
+<div class="project-page">
+  <a href="../index.html#projects" class="back-link">&larr; All Projects</a>
+  <h1 class="project-title">Surgical VLM Temporal Benchmark</h1>
+  <div class="project-tags">
+    <span class="ptag ptag-ml">ML</span>
+    <span class="ptag ptag-robot">CV</span>
+    <span class="ptag">DINOv2 / CLIP</span>
+    <span class="ptag">EndoViT</span>
+    <span class="ptag">PyTorch</span>
+    <span class="ptag">Cholec80</span>
+    <span class="ptag">HF Transformers</span>
+    <span class="ptag">SLURM</span>
+  </div>
+  <div class="project-links">
+    <a href="https://github.com/andrewhaggstrom0/endoscopy-vfm-benchmark" target="_blank" rel="noopener">View on GitHub &rarr;</a>
+    <a href="../external-files/Temporal_Aggregation_Erases_the_Advantage_of_Surgical_Domain_Pretraining.pdf" target="_blank" rel="noopener">Read the Paper (PDF) &rarr;</a>
+  </div>
+  <div class="project-body">
+    <p>A reproducible benchmark showing that frame-level accuracy — the standard way frozen vision foundation models are compared for surgical video — overstates the value of surgical-domain pretraining, because temporal aggregation recovers most of the same advantage for free. I benchmarked four vision foundation models (DINOv2, CLIP, EndoViT, BiomedCLIP) on laparoscopic surgical phase recognition using Cholec80, spanning the pretraining 2&times;2 of general-vs-medical and self-supervised-vs-language-supervised. Using paired video-level statistics over all 80 videos, I found that the large advantage surgical-domain pretraining shows on frame-level probing largely disappears once you apply the temporal smoothing any deployed system uses — and that the effect is specific to the domain-pretrained encoder, not a generic artifact of smoothing.</p>
+
+    <h2>Motivation</h2>
+    <p>Frozen foundation-model features are the default perception backbone for surgical video systems, and groups increasingly pay for surgical-domain pretraining on the strength of frame-level benchmark numbers. But a deployed system reasons over an ordered stream and aggregates across it, while the standard evaluation grades encoders on independently sampled, scrambled frames — discarding the very temporal structure the system operates on. Whether a frame-level ranking survives the temporal aggregation a real system performs, and whether domain pretraining's benefit is temporal-recoverable, was unmeasured. That gap is what this project addresses.</p>
+
+    <h2>Approach</h2>
+    <ul>
+      <li>Extract frozen embeddings once through a uniform encoder interface, then run every experiment as a pure function over that cache</li>
+      <li>Store embeddings as memory-mapped NumPy arrays verified by SHA-256 manifest on every read</li>
+      <li>Use video-level splits throughout — frames within a surgery are near-duplicates, so frame-level splitting leaks and frame-level error bars are an order of magnitude too tight</li>
+      <li>Run linear and kNN probes, plus a temporal-reliability suite validated against twelve synthetic controls</li>
+      <li>Sweep a majority-filter smoothing in both offline and real-time (causal) variants</li>
+      <li>Test cross-encoder claims with a paired video-level bootstrap under 5-fold cross-validation over all 80 videos</li>
+    </ul>
+
+    <h2>Findings</h2>
+    <ul>
+      <li><strong>The advantage evaporates:</strong> EndoViT leads general-purpose DINOv2 by 6.0 accuracy points on the frame-level probe, but 85% of that lead disappears under causal temporal smoothing, leaving a residual gap indistinguishable from zero</li>
+      <li><strong>Specific, not generic:</strong> every EndoViT gap shrinks 55–85% under smoothing while the DINOv2–CLIP gap is flat (1%), ruling out generic compression and localizing the effect to domain pretraining</li>
+      <li><strong>Supervision beats domain:</strong> medical pretraining delivered by language supervision (BiomedCLIP) transfers essentially nothing over general CLIP in accuracy, though it does change how the representation tracks scene motion</li>
+      <li><strong>Systematic over-segmentation:</strong> all four encoders predict 80–124&times; too many phase transitions at 0.66–0.72 frame accuracy</li>
+    </ul>
+
+    <h2>The Core Result</h2>
+    <p>Frame-level evaluation systematically overstates what surgical-domain pretraining buys, because temporal aggregation substitutes for much of it — a negative result with teeth, independently corroborated by concurrent work showing EndoViT's advantage reverses out-of-domain under a stronger temporal head. It is backed by paired video-level statistics, a specificity control, a well-powered null, a variance-normalized drift metric (raw drift is gameable by low-variance encoders, and correcting it changes the stability ranking), and a candid methodological note: an apparent rank inversion I found at n=32 failed to replicate at n=80 — itself evidence that the sub-2-point encoder margins common in this literature aren't resolvable without paired error bars.</p>
+
+    <h2>Stack</h2>
+    <p>Python &middot; PyTorch &middot; Hugging Face Transformers &middot; timm &middot; open_clip &middot; scikit-learn &middot; NumPy &middot; SciPy &middot; OpenCV &middot; Hydra &middot; pytest &middot; matplotlib &middot; SLURM &middot; CUDA &middot; LaTeX. Frozen embeddings are extracted once and cached as memory-mapped arrays with SHA-256 manifests; downstream probes, the temporal-reliability suite, dense optical-flow coupling (OpenCV Farneback), and the paired video-level bootstrap all run as pure functions over that cache, on a WashU A40 SLURM cluster.</p>
+  </div>
+</div>
+
+<div class="page-footer">
+  <span>&copy; 2026 Andrew Haggstrom &middot; Powered by GitHub Pages</span>
+  <span>Styled after Minimal Mistakes</span>
+</div>
+
+</body>
+</html>
