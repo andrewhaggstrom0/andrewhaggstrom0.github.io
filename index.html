@@ -212,12 +212,23 @@ a:hover { color: var(--link-hover); text-decoration: underline; }
     <section class="content-section" id="projects">
       <div class="section-title-row">
         <h2 class="section-heading">Projects</h2>
-        <span class="section-count">14 projects</span>
+        <span class="section-count">15 projects</span>
       </div>
 
       <div class="category-section">
         <div class="category-heading"><span class="cat-dot cat-dot-robot"></span>Robotics / Computer Vision</div>
         <div class="archive-grid">
+          <a href="projects/ttc-control.html" class="archive-item">
+            <div class="archive-item-header">
+              <span class="archive-item-title">Test-Time Compute for Control</span>
+              <span class="archive-arrow">↗</span>
+            </div>
+            <p class="archive-item-excerpt">Sampling K candidate action chunks and selecting with a learned verifier makes control policies worse than no search at all — 0.62 to 0.40 at K=64, below even random selection — while a MuJoCo state-restore oracle on the same candidates reaches 0.74, proving the better actions were there and the verifier simply never found them.</p>
+            <div class="archive-item-tags">
+              <span class="atag atag-robot">Robotics</span>
+              <span class="atag atag-ml">ML</span>
+            </div>
+          </a>
           <a href="projects/vla-geometry-token-robustness.html" class="archive-item">
             <div class="archive-item-header">
               <span class="archive-item-title">Geometry-Token VLA Robustness</span>

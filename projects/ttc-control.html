@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Test-Time Compute for Control — Andrew Haggstrom</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet" />
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; }
+
+:root {
+  --bg:           #fff;
+  --text:         #494e52;
+  --text-dark:    #1a1d1e;
+  --muted:        #6f777d;
+  --border:       #f2f3f3;
+  --border-dark:  #dee0e2;
+  --link:         #0092ca;
+  --link-hover:   #006f9b;
+  --tag-bg:       #f2f3f3;
+  --tag-text:     #494e52;
+  --ml:           #0b6e4e;
+  --ml-bg:        #e8f5f0;
+  --robot:        #6d3f9e;
+  --robot-bg:     #f0eaf7;
+  --font:         Lato, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --font-serif:   Georgia, Times, 'Times New Roman', serif;
+  --font-mono:    'Lucida Console', Courier, monospace;
+}
+
+body { font-family: var(--font); font-size: 16px; line-height: 1.5; color: var(--text); background: var(--bg); -webkit-font-smoothing: antialiased; }
+a { color: var(--link); text-decoration: none; }
+a:hover { color: var(--link-hover); text-decoration: underline; }
+
+.masthead { position: sticky; top: 0; z-index: 200; background: var(--bg); border-bottom: 1px solid var(--border-dark); }
+.masthead-inner { max-width: 1280px; margin: 0 auto; padding: 0 1.5rem; display: flex; align-items: center; justify-content: space-between; height: 56px; }
+.masthead-title { font-size: 1rem; font-weight: 700; color: var(--text-dark); text-decoration: none; }
+.masthead-title:hover { color: var(--link); text-decoration: none; }
+.greedy-nav { display: flex; list-style: none; }
+.greedy-nav a { display: block; padding: 0 0.85rem; font-size: 0.8125rem; font-weight: 700; color: var(--text); text-transform: uppercase; letter-spacing: 0.05em; line-height: 56px; border-bottom: 2px solid transparent; transition: color 0.15s, border-color 0.15s; }
+.greedy-nav a:hover { color: var(--link); text-decoration: none; border-bottom-color: var(--link); }
+
+.project-page { max-width: 800px; margin: 0 auto; padding: 2.5rem 1.5rem 4rem; }
+.back-link { font-size: 0.8125rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); margin-bottom: 2rem; display: inline-block; }
+.back-link:hover { color: var(--link); text-decoration: none; }
+.project-title { font-family: var(--font-serif); font-size: 2rem; font-weight: 400; color: var(--text-dark); line-height: 1.2; margin-bottom: 0.75rem; }
+.project-tags { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 1rem; }
+.ptag { font-size: 0.6875rem; font-weight: 700; background: var(--tag-bg); color: var(--tag-text); padding: 3px 8px; border-radius: 3px; text-transform: uppercase; letter-spacing: 0.04em; }
+.ptag-ml { background: var(--ml-bg); color: var(--ml); }
+.ptag-robot { background: var(--robot-bg); color: var(--robot); }
+.project-links { margin-bottom: 1.5rem; display: flex; flex-wrap: wrap; gap: 1.25rem; }
+.project-links a { font-size: 0.8125rem; font-weight: 700; }
+.project-body { font-size: 0.9375rem; color: var(--text); line-height: 1.7; }
+.project-body p { margin-bottom: 1rem; }
+.project-body h2 { font-family: var(--font-serif); font-size: 1.35rem; font-weight: 400; color: var(--text-dark); margin: 2rem 0 0.75rem; }
+.project-body ul { margin: 0 0 1rem 1.5rem; }
+.project-body li { margin-bottom: 0.35rem; }
+.project-body code { font-family: var(--font-mono); font-size: 0.8125rem; background: var(--tag-bg); padding: 1px 4px; border-radius: 3px; }
+
+.project-figure { margin: 1.5rem 0 1.75rem; }
+.project-figure img { width: 100%; height: auto; display: block; border: 1px solid var(--border-dark); border-radius: 3px; }
+.project-figure figcaption { font-size: 0.8125rem; color: var(--muted); margin-top: 0.5rem; line-height: 1.5; }
+
+.page-footer { border-top: 1px solid var(--border); padding: 1.5rem; max-width: 1280px; margin: 0 auto; display: flex; justify-content: space-between; font-size: 0.75rem; color: var(--muted); }
+</style>
+</head>
+<body>
+
+<div class="masthead">
+  <div class="masthead-inner">
+    <a href="../index.html" class="masthead-title">Andrew Haggstrom</a>
+    <ul class="greedy-nav">
+      <li><a href="../index.html#projects">Projects</a></li>
+      <li><a href="../index.html#skills">Skills</a></li>
+      <li><a href="../index.html#contact">Contact</a></li>
+    </ul>
+  </div>
+</div>
+
+<div class="project-page">
+  <a href="../index.html#projects" class="back-link">&larr; All Projects</a>
+  <h1 class="project-title">Test-Time Compute for Control</h1>
+  <div class="project-tags">
+    <span class="ptag ptag-ml">ML</span>
+    <span class="ptag ptag-robot">Robotics</span>
+    <span class="ptag">MuJoCo</span>
+    <span class="ptag">Meta-World</span>
+    <span class="ptag">PyTorch</span>
+    <span class="ptag">Model-Based RL</span>
+    <span class="ptag">SLURM</span>
+  </div>
+  <div class="project-links">
+    <a href="https://github.com/andrewhaggstrom0/ttc-control" target="_blank" rel="noopener">View on GitHub &rarr;</a>
+    <a href="../external-files/Test_Time_Search_Degrades_Control_Policies_When_the_Verifier_Is_Learned.pdf" target="_blank" rel="noopener">Read the Paper (PDF) &rarr;</a>
+  </div>
+  <div class="project-body">
+    <p>Language models get better when you let them spend more compute at inference &mdash; sample many candidates, score them, keep the best. Control policies don't do this: observe, one forward pass, execute. The obvious port is to sample K candidate action chunks and select among them with a learned scorer, and four recent robotics papers (RoboMonkey, RoVer, ELASTIC, CoVer-VLA) all report gains from exactly that. But every one of them evaluates at K &le; 32, and the scorer is a learned proxy &mdash; which is precisely where Goodhart's law lives. Swept out to K = 64 across six long-horizon Meta-World tasks, the effect reverses hard: selecting by the learned verifier drops success from 0.62 to 0.40, worse than selecting at random, while an oracle verifier on the same candidate sets climbs to 0.74. The better candidates are there; the learned verifier just never finds them.</p>
+
+    <h2>Motivation</h2>
+    <p>Reward-model over-optimization is well characterized in language models (Gao et al., 2022) and entirely uncharacterized for embodied control, where the proxy is a learned dynamics model and value function rather than a preference model. The methodological opening is that MuJoCo permits exact state save and restore, so candidates can be scored by rolling them out in the <em>true</em> simulator and rewinding. That gives an oracle verifier, and the oracle is what makes a negative result interpretable at all &mdash; without it, a flat scaling curve is ambiguous between "no better candidates exist," "the search is broken," and "the verifier is bad." With it, those three become separable measurements.</p>
+
+    <h2>Setup</h2>
+    <ul>
+      <li>Six Meta-World V3 tasks screened for long horizons and difficulty spread &mdash; peg-insert-side, basketball, stick-pull, shelf-place, disassemble, bin-picking. Demos run 114&ndash;145 steps, giving 31&ndash;45 decision points per episode at n_exec = 8; reach/push/pick-place were rejected as too short to compound anything at ~six decisions</li>
+      <li>Base policies are per-task MLP chunk regressors (3&times;512 hidden, Mish, tanh output) trained on 100 scripted-expert demos each, predicting 16-step action chunks from the 39-dim state &mdash; landing at 0.40&ndash;0.65 success through task difficulty rather than deliberate degradation</li>
+      <li>The verifier is a 5-member PETS-style probabilistic dynamics ensemble (Gaussian NLL, bootstrapped batches) plus an MC-return value function, planning h = 4 steps with the value function bootstrapping the remaining 12</li>
+      <li>The planning horizon was calibrated by measuring rollout drift against ground truth: 0.34&sigma; at h = 1, 1.52&sigma; at h = 4, 6.91&sigma; at h = 16</li>
+      <li>Nine arms &mdash; no-search, random, oracle, learned dynamics at four calibrated &beta; values, value best-of-N, self-consistency &mdash; with K swept 1&rarr;64, 50 episodes per cell, nested candidate sets, and every arm paired by episode seed</li>
+    </ul>
+
+    <h2>Findings</h2>
+    <ul>
+      <li><strong>Learned-verifier search is worse than random selection:</strong> pooled over 300 episodes per cell, K = 1&rarr;64 gives no-search 0.62&rarr;0.62, random 0.62&rarr;0.58, learned verifier 0.62&rarr;0.40, oracle 0.62&rarr;0.74. Monotone degradation from K = 2 with no beneficial regime, and the random control is what makes it airtight &mdash; the harm comes specifically from choosing on predicted value, not from having more candidates around</li>
+      <li><strong>The verifier is the failure point, not the search:</strong> auditing 435 decision points on disassemble against true simulator rollouts, the best available candidate improves 12.45&rarr;14.50 as K grows while the verifier's pick stays flat at ~12.3 &mdash; indistinguishable from the average candidate at ~12.5, with normalized regret of 0.93&ndash;1.08 at every K</li>
+      <li><strong>Small per-decision harm compounds:</strong> roughly 5% per decision across ~30 decisions produces a 22-point episode-level effect &mdash; the likely reconciliation with prior work reporting gains at smaller K and shorter horizons. The pick-by-pick scan makes it concrete: on states where the outcome was genuinely undecided, the oracle picks a succeeding future nearly every time while the learned verifier fails about half the time, from the same state with the same candidates</li>
+      <li><strong>Verifier-free selection is immune:</strong> self-consistency &mdash; the medoid of the candidate set, no learned scorer anywhere &mdash; holds flat at 0.62&rarr;0.61 pooled and improves on disassemble (0.78&rarr;0.86). Nothing to Goodhart and no extra model to train, which makes it the practical recommendation</li>
+      <li><strong>Uncertainty penalties don't rescue it:</strong> four &beta; values per task, calibrated against measured return-spread / disagreement-spread ratios, give pooled K = 64 success of 0.40 / 0.41 / 0.43 / 0.41 &mdash; indistinguishable across two orders of magnitude. A clean null, and worth noting the naive &beta; range of 0&ndash;5 would have been 20&ndash;400&times; too small to do anything at all</li>
+      <li><strong>Two results reported as what they are:</strong> model quality shows no systematic relationship with degradation across a 12&times; error range on two tasks &mdash; an underpowered null, reported as a null rather than as evidence of independence. Objective misspecification is framed as a hypothesis: the oracle also degrades on disassemble (0.78&rarr;0.44) despite perfect dynamics, implicating the 16-step-return objective, and cross-task the per-decision audit gap tracks the sweep's oracle slope at r = +0.75, n = 6, p &asymp; 0.08, with shelf-place discordant</li>
+    </ul>
+
+    <h2>A Single Decision Point</h2>
+    <figure class="project-figure">
+      <a href="../external-files/paths.png" target="_blank" rel="noopener"><img src="../external-files/paths.png" alt="Candidate action-chunk futures branching from a single decision point in a Meta-World task" /></a>
+      <figcaption>Candidate futures branching from one genuinely undecided state on disassemble &mdash; each trace is a sampled action chunk rolled forward in the true simulator from an identical snapshot, half leading to success and half to failure. The oracle scores these by running them; the learned verifier scores them by predicting, and across the full audit its picks come out indistinguishable from picking at random. This is one of the states where it got lucky.</figcaption>
+    </figure>
+
+    <h2>Debugging</h2>
+    <p>Arguably the real work. Every one of these produced plausible-looking but wrong output:</p>
+    <ul>
+      <li><strong>The diffusion sampler, twice.</strong> <code>linspace(1e-4, 0.02)</code> over 100 steps left terminal &#257; at 0.37, so training never saw pure noise while sampling started from it. The cosine-schedule fix pushed terminal &#257; to 2e-15, which then broke the DDIM update by dividing by &radic;(2e-15). Abandoned for an MLP regressor after a positive control (pick-place, 90% success, MSE 0.0015) isolated the sampler as the sole cause</li>
+      <li><strong>Snapshot restore.</strong> <code>mjSTATE_FULLPHYSICS</code> omits <code>qacc_warmstart</code>, and <code>mj_forward</code> overwrites it as a side effect; Python state also had to roll back on all seven wrapper layers, not just <code>.unwrapped</code>. The single-restore test passed while the nested eight-restore test failed &mdash; drift only accumulates across cycles</li>
+      <li><strong>Episode pairing.</strong> Meta-World draws goals at construction, so unseeded per-episode env creation quietly gave every arm a different task. Caught by asserting the first observation is invariant to K</li>
+      <li><strong>The 1e-6 normalization floor.</strong> Constant observation dims made ensemble disagreement read 383&ndash;547 instead of &Lt;1, and diverged 16-step rollouts to NaN by amplifying dead-dim deltas ~10&#8310;&times; per step</li>
+      <li><strong>Three broken metrics.</strong> Between-episode correlation measured episode difficulty; within-episode correlation measured position in the episode (the oracle scored negative while performing best); the optimism gap was just the max-of-K order statistic, near-identical for every arm including random. All replaced with selection regret audited against oracle scores on the same candidate set</li>
+      <li><strong>Simpson's paradox.</strong> Pooling two tasks in the dose-response gave r = &minus;0.81 purely from between-task clustering &mdash; no within-task trend existed</li>
+      <li><strong>Silent non-training.</strong> <code>--frac 0.02</code> with <code>batch_size=512</code> and <code>drop_last=True</code> yielded zero batches; the loss printed nan and the checkpoint saved random initialization, which then measured downstream as "6.08&sigma; error"</li>
+      <li><strong>The futures visualization.</strong> Continuation seeds depended on candidate index, so continuation noise rather than the choice decided outcomes. And <code>--warmup</code> meant steps in one script and chunks in another, so it branched from already-solved states where every future terminated in one step reporting success</li>
+    </ul>
+
+    <h2>Stack</h2>
+    <p>Python &middot; PyTorch &middot; MuJoCo &middot; Meta-World V3 &middot; Gymnasium &middot; NumPy &middot; SciPy &middot; matplotlib &middot; pytest &middot; SLURM &middot; CUDA &middot; LaTeX. Candidate scoring runs against exact MuJoCo state snapshots so oracle and learned arms see byte-identical starting states, and the full nine-arm K-sweep was run on WashU A40 nodes (<code>condo-cse5100</code>).</p>
+  </div>
+</div>
+
+<div class="page-footer">
+  <span>&copy; 2026 Andrew Haggstrom &middot; Powered by GitHub Pages</span>
+  <span>Styled after Minimal Mistakes</span>
+</div>
+
+</body>
+</html>
