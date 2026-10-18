@@ -58,6 +58,10 @@ a:hover { color: var(--link-hover); text-decoration: underline; }
 .project-body ul { margin: 0 0 1rem 1.5rem; }
 .project-body li { margin-bottom: 0.35rem; }
 
+.project-figure { max-width: 420px; margin: 0 auto 1.75rem; }
+.project-figure video { width: 100%; height: auto; display: block; border: 1px solid var(--border-dark); border-radius: 3px; background: #000; }
+.project-figure figcaption { font-size: 0.8125rem; color: var(--muted); margin-top: 0.5rem; line-height: 1.5; }
+
 .page-footer { border-top: 1px solid var(--border); padding: 1.5rem; max-width: 1280px; margin: 0 auto; display: flex; justify-content: space-between; font-size: 0.75rem; color: var(--muted); }
 </style>
 </head>
@@ -91,8 +95,12 @@ a:hover { color: var(--link-hover); text-decoration: underline; }
     <a href="https://github.com/andrewhaggstrom0/geom-vla-priors" target="_blank" rel="noopener">View on GitHub &rarr;</a>
     <a href="../external-files/geom_vla_report.pdf" target="_blank" rel="noopener">Read the Paper (PDF) &rarr;</a>
   </div>
+  <figure class="project-figure">
+    <video src="../external-files/libero_success.mp4" autoplay muted loop playsinline controls></video>
+    <figcaption>Successful LIBERO rollout. Prompt: &ldquo;pick up the black bowl next to the cookie box and place it on the plate&rdquo;</figcaption>
+  </figure>
   <div class="project-body">
-    <p>How much manipulation robustness can the cheapest possible geometric prior buy? I injected a single geometry token — free simulator depth, converted to a world-frame point cloud and encoded by a ~18M-parameter PointNet — into the 7B OpenVLA-OFT policy, then measured per-axis robustness across the 2,519 perturbed tasks of the LIBERO-Plus benchmark.</p>
+    <p>How much manipulation robustness can the cheapest possible geometric prior buy? I injected a single geometry token, free simulator depth converted to a world-frame point cloud and encoded by a ~18M-parameter PointNet, into the 7B OpenVLA-OFT policy, then measured per-axis robustness across the 2,519 perturbed tasks of the LIBERO-Plus benchmark.</p>
 
     <h2>Motivation</h2>
     <p>Vision-Language-Action (VLA) models achieve near-perfect success on clean manipulation benchmarks but degrade sharply once the camera moves or the robot starts from an unfamiliar pose. The literature leaves a cost-focused question open: rather than adding expensive sensing or large 3D backbones, how far does the single cheapest geometric signal go toward closing that robustness gap?</p>
@@ -109,7 +117,7 @@ a:hover { color: var(--link-hover); text-decoration: underline; }
     <ul>
       <li><strong>Fragility fingerprint:</strong> the base model collapses selectively on geometric axes (Camera Viewpoints 45.8%, Robot Initial States 34.6%) while appearance axes hold firm (Background 82.0%, Language 96.3%)</li>
       <li><strong>Verified injection architecture:</strong> the end-to-end surgery, data pipeline, and training recipe produced a policy with converged offline behavior (mean action L1 error 0.036–0.074) and restored gripper anticipation</li>
-      <li><strong>Systems post-mortem:</strong> documented five distinct failure modes — four silent train/eval configuration mismatches and one deeper offline-to-closed-loop generalization gap — plus the diagnostic instruments built to isolate each</li>
+      <li><strong>Systems post-mortem:</strong> documented five distinct failure modes, four silent train/eval configuration mismatches and one deeper offline-to-closed-loop generalization gap, plus the diagnostic instruments built to isolate each</li>
     </ul>
 
     <h2>The Core Result</h2>
